@@ -1,0 +1,3 @@
+Executed SQL Statement : drop table `pythondb`.`cropnamemaster` 
+Error Number : 1217 
+Error Message: Cannot delete or update a parent row: a foreign key constraint fails 

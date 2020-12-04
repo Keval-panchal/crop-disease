@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Editcropmedicine - Cropdiseaseprediction Admin </title>
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="../../static/adminResources/css/style.css">
+    <link rel="stylesheet" href="../../static/adminResources/css/custom.css">
+
+    <!-- mCustomScrollbar -->
+    <link rel="stylesheet" href="../../static/adminResources/css/jquery.mCustomScrollbar.min.css">
+
+    <!-- Waves Effect -->
+    <link rel="stylesheet" href="../../static/adminResources/css/waves.min.css">
+
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="../../static/adminResources/css/sweetalert.css">
+
+    <!-- Color Picker -->
+    <link rel="stylesheet" href="../../static/adminResources/css/color-switcher.min.css">
+</head>
+
+<body>
+
+
+{% include 'admin/menu.html' %}
+
+
+<!-- /.main-menu -->
+
+
+{% include 'admin/header.html' %}
+
+
+<!-- #color-switcher -->
+
+<div id="wrapper">
+    <div class="main-content">
+        <div class="row small-spacing">
+            <div class="col-12">
+                <div class="box-content">
+                    <form data-toggle="validator" action="/admin/updateCropMedicine" method="POST">
+                        <div class="form-group">
+                            <label for="inputName" class="control-label">Crop Type :</label>
+                            <select name="cropMedicine_CropTypeId" class="form-control" required>
+                                <option>Select CropType</option>
+
+                                {% for i in cropTypeVOList %}
+                                    <option value="{{ i['cropTypeId'] }}">{{ i['cropTypeName'] }}</option>
+                                {% endfor %}
+                            </select>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="inputName" class="control-label">Crop Name :</label>
+                            <select name="cropMedicine_CropNameId" class="form-control" required>
+                                <option>Select CropName</option>
+                                {% for row in cropNameVOList %}
+                                    <option value="{{ row[0]['cropNameId'] }}">{{ row[0]['cropName'] }}</option>
+
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        {% for row in cropMedicineVOList %}
+                            <input type="hidden" name="cropMedicineId" value="{{ row['cropMedicineId'] }}"/>
+                            <div class="form-group">
+                                <label for="inputName" class="control-label">Medicine Name :</label>
+                                <input type="text" class="form-control" id="inputName" name="cropMedicineName"
+                                       value="{{ row['cropMedicineName'] }}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputName" class="control-label">Medicine Power :</label>
+                                <input type="text" class="form-control" id="inputName" name="cropMedicinePower"
+                                       value="{{ row['cropMedicinePower'] }}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputName" class="control-label">Medicine Description :</label>
+                                <textarea rows="2" class="form-control" cols="143" name="cropMedicineDescription"
+                                          required>{{ row['cropMedicineDescription'] }}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                            </div>
+                        {% endfor %}
+
+
+                    </form>
+                </div>
+                <!-- /.box-content -->
+            </div>
+            <!-- /.col-12 -->
+        </div>
+        <!-- /.row small-spacing -->
+
+
+        {% include 'admin/footer.html' %}
+
+
+    </div>
+    <!-- /.main-content -->
+</div><!--/#wrapper -->
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+		<script src="../../static/adminResources/js/html5shiv.min.js"></script>
+		<script src="../../static/adminResources/js/respond.min.js"></script>
+	<![endif]-->
+<!--
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="../../static/adminResources/js/jquery.min.js"></script>
+<script src="../../static/adminResources/js/modernizr.min.js"></script>
+<script src="../../static/adminResources/js/popper.min.js"></script>
+<script src="../../static/adminResources/js/bootstrap.min.js"></script>
+<script src="../../static/adminResources/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../../static/adminResources/js/nprogress.js"></script>
+<script src="../../static/adminResources/js/sweetalert.min.js"></script>
+<script src="../../static/adminResources/js/waves.min.js"></script>
+<!-- Full Screen Plugin -->
+<script src="../../static/adminResources/js/jquery.fullscreen-min.js"></script>
+
+<!-- Validator -->
+<script src="../../static/adminResources/js/validator.min.js"></script>
+
+<script src="../../static/adminResources/js/main.min.js"></script>
+<script src="../../static/adminResources/js/mycommon.js"></script>
+<script src="../../static/adminResources/js/color-switcher.min.js"></script>
+</body>
+</html>
